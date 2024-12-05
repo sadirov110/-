@@ -1,0 +1,53 @@
+from calendar import weekday 
+from datetime import datetime, timedelta 
+from email.utils import format_datetime 
+ 
+ 
+class TimeDisplayer: 
+    time = { 
+        'hours': 0, 
+        'minutes': 0, 
+        'seconds': 0 
+    } 
+    day_of_week = "" 
+    day = 0 
+    month = 0 
+    year = 0 
+ 
+    def __return_weekday(self): 
+        days = [ 
+            "Monday", 
+            "Tuesday", 
+            "Wednesday", 
+            "Thursday", 
+            "Friday", 
+            "Saturday", 
+            "Sunday" 
+        ] 
+        return days[weekday] 
+ 
+    def set_datetime(self, hours, minutes, seconds): 
+        current_time = datetime.now() 
+ 
+        self.time['hours'] = hours 
+        self.time['minutes'] = minutes 
+        self.time['seconds'] = seconds 
+ 
+        self.day_of_week = current_time.weekday() 
+        self.day = current_time.day 
+        self.month = current_time.month 
+        self.year = current_time.year 
+        self.day_of_week = current_time.weekday(current_time.weekday()) 
+ 
+    def get_datetime(self): 
+        formatted_datetime = f""" 
+[============================================] 
+         
+{f"{self.hours}:{self.minutes}:{self.second}".center(31, " ")} 
+{f"Сейчас{self.day_of_week}:{self.day}".center(31, " ")} 
+{f"{self.day_of_week}:{self.month}".center(31, " ")} 
+         
+[============================================] 
+""" 
+ 
+        return formatted_datetime
